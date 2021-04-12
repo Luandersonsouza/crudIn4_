@@ -1,0 +1,69 @@
+<Gerenciador>:
+	Menu:
+		name:'menu'
+	Produtos:
+		name:'produtos'
+
+<Menu>:
+	BoxLayout:
+		orientation:'vertical'
+		padding:200
+		canvas:
+			Color:
+				rgba:1,1,1,1
+			Rectangle:
+				size:self.size
+		Image:
+			source: 'imagens/logo.jpeg'
+			size_hint_y:None
+			heigth:300
+			allow_stretch:True
+		Button:
+			text: 'Produtos'
+			on_release: app.root.current = 'produtos'
+			cor: 0.1,0.1,0.1,1
+		Button:
+			text: 'Vendas'
+		Button:
+			text: 'Vendas Produto'
+		Button
+			text: 'Sair'
+			on_release:app.stop()
+
+
+#fim do menu
+<Produtos>:
+	ScrollView:
+		BoxLayout:
+			id: box
+			orientation: 'vertical'
+			ActionBar:
+				ActionView:
+					ActionPrevious:
+						title:'Produtos'
+						on_release:app.root.current ='menu'
+					ActionButton:
+						text:'sair'
+						on_release:app.stop()
+			Button:
+				text: 'Cadastro de produtos'
+				on_release: app.root.current = 'cadastro'
+
+<Cadastro>:
+	orientation:'vertical'
+	ScrollView:
+		BoxLayout:
+			id: cad
+			orientation:'vertical'
+			size_hint_y:None
+			height: self.minimum_height
+			BoxLayout:
+				size_hint_y:None
+				height:60
+				TextInput:
+					id:textoc
+				Button:
+					text:'+'
+					size_hint_x:None
+					width:60
+					on_release:root.addwiget()
